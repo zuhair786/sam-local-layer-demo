@@ -1,0 +1,3 @@
+jinja2
+markupsafe
+file:///C:/Development/Python/layer1/dist/layer1-1.0-py3-none-any.whl
