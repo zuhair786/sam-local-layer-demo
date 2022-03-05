@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: dynamodb-local-python
+    Description: A simple PUT-GET implementation demonstration use of DynamoDB Local
+      using SAM.
+    Author: Sample
+    ReadmeUrl: ..\..\README.md
+    Labels:
+    - sam-dynamodb-local
+    SemanticVersion: '0.0.1'
+Parameters:
+  REGIONNAME:
+    Type: String
+    Description: Default region for deployment.
+    Default: us-east-1
+  AWSENVNAME:
+    Type: String
+    Description: AWS Environment where code is being executed (AWS_SAM_LOCAL or AWS).
+    Default: AWS_SAM_LOCAL
+  DEVENVNAME:
+    Type: String
+    Description: Developer environment where code is being executed (OSX, Windows,
+      or Linux).
+    Default: OSX
+Resources:
+  CreateDelete:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: CreateDelete
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      MemorySize: 128
+      Timeout: 300
+      Description: A simple serverless application to create and delete tables in
+        dynamodb
+      Policies: AmazonDynamoDBFullAccess
+      Environment:
+        Variables:
+          REGION:
+            Ref: REGIONNAME
+          AWSENV:
+            Ref: AWSENVNAME
+          DEVENV:
+            Ref: DEVENVNAME
+      Events:
+        GetItems:
+          Type: Api
+          Properties:
+            Path: /dynamo/{tablename}
+            Method: GET
+        CreateTable:
+          Type: Api
+          Properties:
+            Path: /dynamo/{tablename}
+            Method: POST
+        DeleteTable:
+          Type: Api
+          Properties:
+            Path: /dynamo/{tablename}
+            Method: DELETE
+        PutItems:
+          Type: Api
+          Properties:
+            Path: /dynamo/{tablename}
+            Method: PUT
+        PatchItems:
+          Type: Api
+          Properties:
+            Path: /dynamo/{tablename}
+            Method: PATCH
+    Metadata:
+      SamResourceId: CreateDelete
