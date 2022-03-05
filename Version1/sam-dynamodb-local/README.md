@@ -21,9 +21,12 @@
       
       **Note:** If you misconfigured your table and need to delete it, you may do so by executing the following command:  
         *aws dynamodb delete-table --table-name PersonTable --endpoint-url http://localhost:8000*  
+	
+6. At the command prompt,build the sam appication by execution:
+    *sam build*
 
-6. At the command prompt, start the local API Gateway instance by executing:  
-    *sam local start-api --env-vars json/env.json*  
+7. At the command prompt, start the local API Gateway instance by executing:  
+    *sam local start-api*  
 
 
 ### Deploying the application
