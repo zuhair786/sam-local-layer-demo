@@ -1,5 +1,0 @@
-setup.py
-layer/layer1.egg-info/PKG-INFO
-layer/layer1.egg-info/SOURCES.txt
-layer/layer1.egg-info/dependency_links.txt
-layer/layer1.egg-info/top_level.txt
