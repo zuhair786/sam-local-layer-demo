@@ -40,5 +40,3 @@ Update items JSON body
 Delete items URL
 
 http://localhost:5000/dynamo/deleteitem/movies?hashname=year&hashvalue=2014&sortname=title&sortvalue=aa
-    
-docker run -itd -p 8000:8000  --name dev-db amazon/dynamodb-local:latest -jar DynamoDBLocal.jar -sharedDb
